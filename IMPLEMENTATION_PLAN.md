@@ -236,3 +236,230 @@ Success criteria:
 ## Next Step
 
 Implement Phase 0 by creating the foundational project files and the first core `review` workflow end to end.
+
+## Current Status Snapshot
+
+The repo now has the first engineering core implemented in OpenCode-native form.
+
+Implemented workflows:
+
+- `/browse`
+- `/setup-browser-cookies`
+- `/setup-deploy`
+- `/land-and-deploy`
+- `/canary`
+- `/benchmark`
+- `/document-release`
+- `/office-hours`
+- `/plan-ceo-review`
+- `/plan-design-review`
+- `/design-review`
+- `/autoplan`
+- `/careful`
+- `/freeze`
+- `/guard`
+- `/unfreeze`
+- `/review`
+- `/investigate`
+- `/qa`
+- `/qa-only`
+- `/plan-eng-review`
+- `/ship`
+
+Implemented supporting pieces:
+
+- `AGENTS.md`
+- `opencode.json`
+- repo-owned browser adapter surface in `.opencode/tools/browser.ts`
+- first working backend bridge to the installed `gstack` browse binary
+- browser adapter planning and runtime docs
+- quickstart setup script for copying the pack into another project
+- quickstart install and usage doc
+- `ship` adapted to require gitmoji-formatted commits
+
+This means the project is at a usable alpha for engineering workflows, but not yet at full `gstack` surface or platform parity.
+
+## Gap Analysis Against gstack
+
+This section records what is still missing after cross-checking the upstream `gstack` repository.
+
+### Missing workflow surface
+
+Not yet implemented:
+
+- `/design-consultation`
+- `/design-shotgun`
+- `/connect-chrome`
+- `/retro`
+- `/codex`
+- `/cso`
+- `/gstack-upgrade`
+
+### Missing deeper runtime capabilities
+
+The larger missing areas are not just command names.
+
+1. Browser productization
+
+- screenshot and evidence conventions
+- headed Chrome and handoff/resume UX
+- backend abstraction that does not depend primarily on the `gstack` binary bridge
+
+2. Install and distribution
+
+- quickstart setup script now exists for project-local bootstrap
+- polished global and repo-local install flow still missing
+- release/build pipeline
+- versioning and changelog automation
+
+3. Docs maturity
+
+- `ARCHITECTURE.md`
+- `CONTRIBUTING.md`
+- `CHANGELOG.md`
+- `VERSION`
+- deeper usage and troubleshooting docs
+
+4. Verification and CI
+
+- automated tests for commands, skills, and tools
+- workflow/e2e verification
+- CI pipeline
+- prompt/workflow evaluation harness
+
+5. Orchestration and memory
+
+- review readiness and state tracking
+- cross-workflow artifact passing
+- test-plan artifact generation and consumption
+- local learnings or memory system
+- autoplan-style orchestration
+
+6. Safety and operational controls
+
+- destructive command safety mode
+- freeze/guard editing boundaries
+- deploy config and post-deploy verification
+
+7. Advanced ship/release behavior
+
+- richer base-branch detection
+- PR creation automation
+- coverage audit and release-note flow
+- documentation sync after ship
+
+## Phase 2: Full-Stack Completion
+
+Phase 2 is about closing the biggest remaining gaps so `gstack-for-opencode` becomes more than an engineering-core prompt pack.
+
+### Phase 2 priorities
+
+Build in this order:
+
+1. native browser workflows
+2. deploy and landing workflows
+3. documentation sync and release polish
+4. product and design planning workflows
+5. safety modes and operational controls
+6. orchestration and install/distribution
+
+### Phase 2A: Native Browser Workflows
+
+Deliverables:
+
+- `/browse`
+- `/setup-browser-cookies`
+- browser evidence and screenshot conventions
+- stronger backend abstraction over the current bridge
+
+Why first:
+
+- browser-backed QA is already partially real
+- `gstack`'s biggest experiential advantage comes from the browser layer
+- `/qa` becomes much more useful when `/browse` exists as a first-class workflow
+
+Exit criteria:
+
+- a user can invoke `/browse` directly for navigation, inspection, and evidence capture
+- `/qa` and `/qa-only` share the same underlying browser contract cleanly
+
+### Phase 2B: Deploy And Landing
+
+Deliverables:
+
+- `/setup-deploy`
+- `/land-and-deploy`
+- `/canary`
+
+Exit criteria:
+
+- merge-to-deploy flow exists in OpenCode-native form
+- production verification is explicit, not implied
+
+### Phase 2C: Release And Docs
+
+Deliverables:
+
+- `/document-release`
+- improved `/ship`
+- `CHANGELOG.md`
+- `VERSION`
+
+Exit criteria:
+
+- post-ship docs and release metadata can be kept in sync automatically
+
+### Phase 2D: Product And Design Workflow Layer
+
+Deliverables:
+
+- `/office-hours`
+- `/plan-ceo-review`
+- `/plan-design-review`
+- `/design-review`
+- `/design-consultation`
+- `/design-shotgun`
+
+Exit criteria:
+
+- the product-to-design-to-build planning loop exists, not just eng execution
+
+### Phase 2E: Safety And Orchestration
+
+Deliverables:
+
+- `/careful`
+- `/freeze`
+- `/guard`
+- `/unfreeze`
+- `/autoplan`
+- review readiness and artifact-passing primitives
+
+Exit criteria:
+
+- the system can protect itself during risky work and coordinate multi-review flows more intelligently
+
+### Phase 2F: Packaging And Verification
+
+Deliverables:
+
+- setup/install flow
+- CI
+- tests for commands, skills, and tools
+- contributor docs and architecture docs
+
+Exit criteria:
+
+- someone else can install, verify, and contribute without reading the source first
+
+## Immediate Next Build Order
+
+The next implementation sequence should be:
+
+1. `/retro`
+2. `/codex`
+3. `/cso`
+
+## Active Next Step
+
+Continue by closing the remaining operational and support workflows, starting with `/retro`.

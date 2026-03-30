@@ -4,6 +4,108 @@
     "browser": false
   },
   "agent": {
+    "browse": {
+      "description": "Runs direct browser workflows for navigation, inspection, and evidence capture using the repo-owned browser adapter.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "tools": {
+        "browser": true
+      },
+      "permission": {
+        "skill": {
+          "browse-playbook": "allow"
+        }
+      }
+    },
+    "benchmark": {
+      "description": "Measures live page performance, compares against baselines, and reports regressions in timing, bundle size, and resource behavior.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "tools": {
+        "browser": true
+      },
+      "permission": {
+        "skill": {
+          "performance-baseline": "allow"
+        }
+      }
+    },
+    "canary": {
+      "description": "Monitors a live deployment after release, checks for page failures and regressions, and records evidence-based health reports.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "tools": {
+        "browser": true
+      },
+      "permission": {
+        "skill": {
+          "post-deploy-monitoring": "allow"
+        }
+      }
+    },
+    "careful": {
+      "description": "Activates destructive-action guardrails for the session, warning before risky commands and operations in shared or production-like environments.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "permission": {
+        "skill": {
+          "destructive-command-guard": "allow"
+        }
+      }
+    },
+    "freeze": {
+      "description": "Restricts edits to a specific directory boundary for the session so unrelated files are not accidentally modified.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "permission": {
+        "skill": {
+          "edit-boundary": "allow"
+        }
+      }
+    },
+    "guard": {
+      "description": "Activates full safety mode by combining destructive-command warnings with a directory-scoped edit boundary.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "permission": {
+        "skill": {
+          "full-safety-mode": "allow"
+        }
+      }
+    },
+    "unfreeze": {
+      "description": "Clears the current edit boundary so file edits are allowed anywhere again.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "permission": {
+        "skill": {
+          "edit-boundary": "allow"
+        }
+      }
+    },
+    "setup-browser-cookies": {
+      "description": "Imports cookies from a real browser into the configured browser adapter session for authenticated browsing and QA.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "tools": {
+        "browser": true
+      },
+      "permission": {
+        "skill": {
+          "browser-cookie-setup": "allow"
+        }
+      }
+    },
+    "setup-deploy": {
+      "description": "Detects and records deploy platform, URL, and verification settings so land-and-deploy can run with less guesswork.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "permission": {
+        "skill": {
+          "deploy-setup": "allow"
+        }
+      }
+    },
     "investigate": {
       "description": "Investigates bugs with a root-cause-first debugging workflow before making fixes.",
       "mode": "subagent",
@@ -11,6 +113,79 @@
       "permission": {
         "skill": {
           "investigate-workflow": "allow"
+        }
+      }
+    },
+    "document-release": {
+      "description": "Audits and updates project documentation after shipped changes so docs, changelog, and release metadata do not drift.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "permission": {
+        "skill": {
+          "doc-sync": "allow"
+        }
+      }
+    },
+    "office-hours": {
+      "description": "Runs a product or builder brainstorming session that sharpens the problem, tests premises, compares approaches, and ends in an approved design doc instead of code.",
+      "mode": "subagent",
+      "temperature": 0.2,
+      "permission": {
+        "skill": {
+          "idea-framing": "allow"
+        }
+      }
+    },
+    "plan-ceo-review": {
+      "description": "Reviews a plan in founder-mode, challenges the problem framing, and lets the user explicitly choose whether to expand, hold, or reduce scope.",
+      "mode": "subagent",
+      "temperature": 0.2,
+      "permission": {
+        "skill": {
+          "scope-shaping": "allow"
+        }
+      }
+    },
+    "plan-design-review": {
+      "description": "Reviews a plan's UI and UX before implementation, rates design completeness, and fills missing design decisions directly into the plan.",
+      "mode": "subagent",
+      "temperature": 0.2,
+      "permission": {
+        "skill": {
+          "design-plan-rubric": "allow"
+        }
+      }
+    },
+    "design-review": {
+      "description": "Audits a live UI for visual and interaction quality, fixes issues in small verified steps, and reports before/after design score movement.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "tools": {
+        "browser": true
+      },
+      "permission": {
+        "skill": {
+          "visual-qa": "allow"
+        }
+      }
+    },
+    "autoplan": {
+      "description": "Runs the full plan review gauntlet by orchestrating CEO, design, and engineering reviews, auto-deciding mechanical choices and surfacing taste decisions at a final gate.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "permission": {
+        "skill": {
+          "review-orchestration": "allow"
+        }
+      }
+    },
+    "land-and-deploy": {
+      "description": "Merges a PR or branch, waits for deployment, and verifies the live result with explicit post-merge reporting.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "permission": {
+        "skill": {
+          "deploy-verification": "allow"
         }
       }
     },
