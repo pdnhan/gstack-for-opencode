@@ -1,153 +1,148 @@
-# gstack-for-opencode
+<p align="center">
+  <img src="docs/assets/logo.png" alt="gstack-for-opencode" width="200"/>
+</p>
 
-An OpenCode-native workflow pack inspired by `gstack`.
+<h1 align="center">gstack-for-opencode</h1>
 
-The goal is to bring opinionated planning, review, QA, investigation, and shipping workflows to OpenCode using its native primitives:
+<p align="center">
+  <strong>An OpenCode-native workflow pack inspired by `gstack`</strong>
+</p>
 
-- `AGENTS.md` for repository guidance
-- `.opencode/agents/` for specialist agents
-- `.opencode/commands/` for slash commands
-- `.opencode/skills/` for reusable workflows
-- optional `.opencode/tools/` and MCP integrations for browser and deploy adapters
+<p align="center">
+  <a href="https://github.com/anomalyco/opencode/stargazers">
+    <img src="https://img.shields.io/github/stars/anomalyco/opencode?style=flat" alt="GitHub Stars"/>
+  </a>
+  <a href="https://github.com/anomalyco/opencode/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/anomalyco/opencode" alt="License"/>
+  </a>
+  <a href="https://github.com/anomalyco/opencode/issues">
+    <img src="https://img.shields.io/github/issues/anomalyco/opencode" alt="GitHub Issues"/>
+  </a>
+  <a href="https://github.com/anomalyco/opencode/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/anomalyco/opencode/verify.yml" alt="Build Status"/>
+  </a>
+  <a href="https://opencode.ai">
+    <img src="https://img.shields.io/badge/Powered%20by-OpenCode-blue" alt="Powered by OpenCode"/>
+  </a>
+</p>
 
-## Status
+---
 
-Usable alpha, now in the external-adoption phase focused on installability, verification, CI, and contributor-facing docs.
+> Opinionated planning, review, QA, investigation, and shipping workflows for OpenCode.
 
-## Project Layout
+## Why gstack-for-opencode?
 
-```text
-AGENTS.md
-IMPLEMENTATION_PLAN.md
-opencode.json
-.opencode/
-  agents/
-  commands/
-  skills/
-  tools/
-```
+This pack brings battle-tested DevEx workflows to OpenCode using its native primitives—no compatibility shims, no Claude Code dependencies. Everything runs directly on OpenCode's agent, command, and skill surfaces.
 
-## Design Goals
-
-- OpenCode-first, not a thin Claude Code port
-- small, inspectable Markdown artifacts
-- findings-first review behavior
-- root-cause-first debugging
-- optional browser and deploy adapters
-
-## Adoption Priorities
-
-1. make project-local install the default, documented path
-2. verify the pack on a clean machine path in CI
-3. fill architecture, contributor, and troubleshooting docs
-4. keep release metadata visible with `CHANGELOG.md` and `VERSION`
-
-## Install
-
-Preferred path for this milestone: project-local install.
-
-To install this pack into another project:
+## Quickstart
 
 ```sh
+# Install into your project
 ./scripts/quickstart-setup.sh /path/to/your-project
 ```
 
-Then open that target project in OpenCode.
+Then open your project in OpenCode. Commands, agents, and skills are discovered automatically.
 
-Canonical docs:
+Full setup guide: [`docs/install.md`](docs/install.md)
 
-- install: `docs/install.md`
-- quickstart: `docs/quickstart.md`
-- verification: `docs/verification.md`
-- troubleshooting: `docs/troubleshooting.md`
-- architecture: `ARCHITECTURE.md`
-- contributing: `CONTRIBUTING.md`
-- release history: `CHANGELOG.md`
-- current version: `VERSION`
+## Features
 
-## Usage
+- **Code Review** — Findings-first review with bug detection, regression analysis, and test coverage checks
+- **Debugging** — Root-cause-first investigation with structured hypothesis testing
+- **QA Testing** — Browser-backed testing with visual diffs and bug reporting
+- **Planning** — Pre-implementation reviews for engineering, design, and strategy
+- **Shipping** — End-to-end release workflow with deploy verification
+- **Security** — Infrastructure-first security auditing
+- **Retrospective** — Team-aware commit analysis and velocity tracking
 
-Open the repo in OpenCode. Project-local commands, agents, and skills should be discovered automatically.
+## Available Commands
 
-Start with:
+| Command | Description |
+|---------|-------------|
+| `/review` | Findings-first code review |
+| `/investigate` | Root-cause-first debugging |
+| `/qa` | Browser-backed testing with fix loop |
+| `/qa-only` | Report-only QA testing |
+| `/browse` | Direct browser workflow |
+| `/plan-eng-review` | Engineering plan review |
+| `/plan-ceo-review` | Strategic scope review |
+| `/plan-design-review` | Design completeness review |
+| `/design-review` | Live UI audit and polish |
+| `/design-shotgun` | Visual design exploration |
+| `/design-consultation` | Design system creation |
+| `/office-hours` | Product brainstorming |
+| `/autoplan` | Full review orchestrator |
+| `/ship` | Release workflow |
+| `/land-and-deploy` | Merge, deploy, verify |
+| `/canary` | Post-deploy monitoring |
+| `/benchmark` | Performance regression detection |
+| `/careful` | Destructive command warnings |
+| `/freeze` | Directory-scoped edit boundary |
+| `/guard` | Full safety mode |
+| `/unfreeze` | Clear edit boundary |
+| `/connect-chrome` | Visible browser validation |
+| `/setup-browser-cookies` | Authenticated session setup |
+| `/setup-deploy` | Deploy configuration |
+| `/learn` | Project learning management |
+| `/retro` | Weekly engineering retro |
+| `/codex` | OpenAI Codex CLI integration |
+| `/cso` | Security audit mode |
+| `/gstack-upgrade` | Port new gstack workflows |
+| `/ogstack-upgrade` | Self-update from remote |
 
-- `/review`
-- `/investigate`
-- `/qa`
-- `/ship`
+## Project Layout
 
-Additional implemented workflows:
+```
+gstack-for-opencode/
+├── AGENTS.md              # Repository guidance
+├── IMPLEMENTATION_PLAN.md # Project roadmap
+├── opencode.json          # Agent & tool registration
+├── .opencode/
+│   ├── agents/            # Specialist agents
+│   ├── commands/          # Slash commands
+│   ├── skills/            # Reusable workflows
+│   └── tools/             # Browser & deploy adapters
+├── docs/                  # Documentation
+└── scripts/               # Setup & verification
+```
 
-- `/browse`
-- `/setup-browser-cookies`
-- `/investigate`
-- `/qa`
-- `/qa-only`
-- `/plan-eng-review`
-- `/setup-deploy`
-- `/land-and-deploy`
-- `/document-release`
-- `/update-docs`
-- `/office-hours`
-- `/plan-ceo-review`
-- `/plan-design-review`
-- `/design-review`
-- `/design-shotgun`
-- `/design-consultation`
-- `/autoplan`
-- `/careful`
-- `/freeze`
-- `/guard`
-- `/unfreeze`
-- `/canary`
-- `/benchmark`
-- `/connect-chrome`
-- `/learn`
-- `/ship`
+## Documentation
 
-Notes:
+- [Installation Guide](docs/install.md)
+- [Quickstart](docs/quickstart.md)
+- [Architecture](ARCHITECTURE.md)
+- [Contributing](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
 
-- `/review` is implemented for findings-first code review.
-- `/investigate` is implemented for root-cause-first debugging.
-- `/browse` is implemented as the first-class direct browser workflow on top of the repo-owned adapter.
-- `/setup-browser-cookies` is implemented as the authenticated browser-session setup workflow on top of the same adapter.
-- `/qa` now has a repo-owned `browser` tool and a first working backend bridge to the installed `gstack` browse binary.
-- `/qa-only` is implemented as the report-only sibling of `/qa` and shares the same browser runtime gating.
-- `/plan-eng-review` is implemented as the engineering plan review workflow for scope, architecture, tests, and performance.
-- `/setup-deploy` is implemented as the deploy configuration workflow and uses `AGENTS.md` as the repo-local source of truth.
-- `/land-and-deploy` is implemented as the merge, deploy, and verification workflow for post-ship release handling.
-- `/document-release` is implemented as the post-ship documentation sync workflow for README, release docs, and related project docs.
-- `/update-docs` is implemented as the GitHub-facing documentation update alias and reuses the same documentation sync workflow with stronger README and badge guidance.
-- `/office-hours` is implemented as the pre-implementation product and builder brainstorming workflow that ends in a design doc instead of code.
-- `/plan-ceo-review` is implemented as the strategic founder-mode review workflow for scope, ambition, and long-term direction.
-- `/plan-design-review` is implemented as the pre-implementation design completeness review for plans with UI or UX scope.
-- `/design-review` is implemented as the live design audit and polish workflow for rendered UIs.
-- `/autoplan` is implemented as the full review orchestrator for CEO, design, and engineering plan reviews.
-- `/careful` is implemented as the destructive-command warning workflow for high-risk operational work.
-- `/freeze` is implemented as the directory-scoped edit-boundary workflow.
-- `/guard` is implemented as the combined careful-plus-freeze safety posture.
-- `/unfreeze` is implemented as the workflow that clears the current edit boundary.
-- `/canary` is implemented as the post-deploy monitoring workflow for live deployment health.
-- `/benchmark` is implemented as the baseline-aware performance regression workflow.
-- `/design-shotgun` is implemented as the visual design exploration workflow that generates multiple variants and converges on feedback.
-- `/design-consultation` is implemented as the design system consultation workflow that proposes aesthetics and creates DESIGN.md.
-- `/connect-chrome` is implemented as the visible-browser validation workflow for Chrome-based browser workflows.
-- `/learn` is implemented as the project learning management workflow for capturing and recalling insights.
-- `/ship` is implemented as the shipping workflow and requires gitmoji-formatted commit messages for commits it creates.
+## Verification
 
-Planning docs:
-
-- `docs/browser-adapter-plan.md`
-- `docs/browser-adapter-config.md`
-
-Verification:
+Run the verification script before submitting PRs:
 
 ```sh
 ./scripts/verify-pack.sh
 ```
 
-That verification pass now includes:
+## Contributing
 
-- structural checks for commands, agents, skills, and docs
-- release metadata checks for `VERSION` and `CHANGELOG.md`
-- a fresh-directory install smoke test using `scripts/quickstart-setup.sh`
+Contributions welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for:
+
+- Setup instructions
+- Repository conventions
+- Workflow development guidelines
+- PR scope recommendations
+
+## License
+
+[MIT](LICENSE) — Feel free to use, modify, and distribute.
+
+## Support
+
+- 📖 [Documentation](docs/)
+- 🐛 [Issue Tracker](https://github.com/anomalyco/opencode/issues)
+- 💬 [Discussions](https://github.com/anomalyco/opencode/discussions)
+
+---
+
+<p align="center">
+  Built with ⚡ by the OpenCode community
+</p>
