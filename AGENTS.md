@@ -18,11 +18,14 @@ Prefer OpenCode primitives over Claude Code compatibility shims.
 
 Implement in this order unless explicitly redirected:
 
-1. `review`
-2. `investigate`
-3. `qa`
-4. `plan-eng-review`
-5. `ship`
+1. `office-hours`
+2. `plan-ceo-review`
+3. `plan-eng-review`
+4. `investigate`
+5. `review`
+6. `qa`
+7. `ship`
+8. `retro`
 
 ## Review Standard
 
