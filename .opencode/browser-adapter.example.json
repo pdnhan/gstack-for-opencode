@@ -1,0 +1,14 @@
+{
+  "command": ["npx", "-y", "your-browser-cli"],
+  "capabilities": [
+    "status",
+    "goto",
+    "click",
+    "fill",
+    "snapshot",
+    "console",
+    "screenshot",
+    "is"
+  ],
+  "timeoutMs": 30000
+}

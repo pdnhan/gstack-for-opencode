@@ -1,0 +1,18 @@
+#!/bin/sh
+set -eu
+
+GLOBAL_BIN="$HOME/.claude/skills/gstack/browse/dist/browse"
+WORKSPACE_BIN="$PWD/.claude/skills/gstack/browse/dist/browse"
+
+if [ -x "$WORKSPACE_BIN" ]; then
+  BROWSE_BIN="$WORKSPACE_BIN"
+elif [ -x "$GLOBAL_BIN" ]; then
+  BROWSE_BIN="$GLOBAL_BIN"
+else
+  printf '%s\n' "gstack browse binary not found. Expected one of:" >&2
+  printf '  %s\n' "$WORKSPACE_BIN" >&2
+  printf '  %s\n' "$GLOBAL_BIN" >&2
+  exit 1
+fi
+
+exec "$BROWSE_BIN" "$@"

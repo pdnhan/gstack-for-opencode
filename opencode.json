@@ -1,0 +1,82 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "tools": {
+    "browser": false
+  },
+  "agent": {
+    "investigate": {
+      "description": "Investigates bugs with a root-cause-first debugging workflow before making fixes.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "permission": {
+        "skill": {
+          "investigate-workflow": "allow"
+        }
+      }
+    },
+    "plan-eng-review": {
+      "description": "Reviews an implementation plan for architecture, edge cases, test coverage, and performance before coding starts.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "permission": {
+        "skill": {
+          "planning-rubric": "allow"
+        }
+      }
+    },
+    "ship": {
+      "description": "Runs a structured ship workflow: assess branch state, verify readiness, prepare a gitmoji commit, and create a PR or shipping-ready output.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "permission": {
+        "skill": {
+          "release-checks": "allow",
+          "gitmoji commits": "allow"
+        }
+      }
+    },
+    "qa": {
+      "description": "Runs browser-oriented QA workflows, triages issues, and fixes app bugs when the required QA adapter is configured.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "tools": {
+        "browser": true
+      },
+      "permission": {
+        "skill": {
+          "qa-playbook": "allow"
+        }
+      }
+    },
+    "qa-only": {
+      "description": "Runs browser-oriented QA in report-only mode without making code changes.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "tools": {
+        "browser": true,
+        "write": false,
+        "edit": false
+      },
+      "permission": {
+        "skill": {
+          "qa-report-only": "allow"
+        }
+      }
+    },
+    "review": {
+      "description": "Reviews current work for bugs, regressions, and missing tests.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": false
+      },
+      "permission": {
+        "skill": {
+          "review-workflow": "allow"
+        }
+      }
+    }
+  }
+}
