@@ -45,6 +45,13 @@ docs/                      usage, runtime, and adapter docs
 scripts/                   setup and verification scripts
 ```
 
+The docs layer now has four user-facing trust surfaces:
+
+- `docs/install.md` for canonical install decisions
+- `docs/quickstart.md` for the shortest project-local path
+- `docs/verification.md` for the verification contract and CI scope
+- `docs/troubleshooting.md` for install and runtime recovery
+
 ## Runtime Model
 
 The normal execution path is:
@@ -62,6 +69,17 @@ This keeps behavior inspectable:
 - agents define role and boundaries
 - skills hold the procedural detail
 - tools provide optional integration points
+
+## Install And Distribution Model
+
+The pack is currently distributed as source, not as a package-manager artifact.
+
+There are two supported usage modes:
+
+1. project-local install: copy the runtime surface into a target repo with `scripts/quickstart-setup.sh`
+2. user-global source clone: keep one local clone of this repo and use it as the source for project-local installs
+
+Architecturally, project-local install is the primary UX for this milestone because it is easier to audit, easier to commit, and easier to verify on a clean machine.
 
 ## Commands
 
@@ -156,6 +174,30 @@ The verification layer should catch at least these cases:
 - an agent or `opencode.json` entry references a missing skill
 - `opencode.json` registers an agent that has no Markdown definition
 - a browser-enabled agent exists without the repo-owned browser tool
+- required install and trust docs are missing
+- release metadata is malformed or missing from the documented flow
+
+## Verification Contract
+
+The verification layer is intentionally split into three parts:
+
+1. structural verification: confirm commands, agents, skills, tools, and docs exist and resolve cleanly
+2. release metadata verification: confirm `VERSION` and `CHANGELOG.md` follow the repo contract
+3. clean-install smoke verification: install into a fresh directory and confirm the expected runtime files land where OpenCode will discover them
+
+Those checks run from `scripts/verify-pack.sh` and are intended to be CI-safe.
+
+## Artifact Contract
+
+For this milestone, evidence should stay minimal and inspectable.
+
+The canonical trust artifacts are:
+
+- `docs/install.md` for the supported install paths
+- `docs/verification.md` for what counts as verified
+- `docs/troubleshooting.md` for recovery paths
+- `.github/workflows/ci.yml` for automated enforcement
+- `CHANGELOG.md` and `VERSION` for visible release state
 
 The verification script in `scripts/verify-pack.mjs` is intended to enforce these structural contracts in CI.
 

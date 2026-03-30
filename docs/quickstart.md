@@ -4,6 +4,8 @@
 
 Get this workflow pack into a project quickly so OpenCode can discover the agents, commands, skills, and browser adapter files without manual copying.
 
+This is the shortest path. For the full decision tree, use `docs/install.md`.
+
 ## Fastest Path
 
 From this repo root, run:
@@ -42,6 +44,8 @@ Open the target project in OpenCode and try one of these commands:
 - `/browse`
 - `/ship`
 
+If command discovery or runtime setup fails, jump to `docs/troubleshooting.md`.
+
 ## Browser Notes
 
 The default browser adapter config points at the wrapper in `.opencode/bin/gstack-browser-backend`.
@@ -61,3 +65,15 @@ If that binary is not present, browser-based workflows will report a blocked or 
 If the target repo already has custom `AGENTS.md`, `opencode.json`, or `.opencode/*` files, the script leaves them in place.
 
 That keeps the quickstart safe, but it also means you may need to merge repo-specific config manually if you want this pack and existing local setup to coexist cleanly.
+
+## Verify The Install
+
+Use this short smoke check in the target repo:
+
+1. Open the repo in OpenCode.
+2. Confirm `/review` is discoverable.
+3. Run `/review`.
+4. Run `/investigate`.
+5. Run `/qa` and confirm the browser state is reported honestly.
+
+For the repo-level verification contract and CI checks, see `docs/verification.md`.

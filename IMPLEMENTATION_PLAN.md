@@ -463,7 +463,14 @@ Completed:
 
 ## Active Next Step
 
-All planned workflows are now implemented. The remaining gaps from the gap analysis are in docs maturity, verification/CI, orchestration/memory, and distribution. See the gap analysis section above for the full list.
+The external-adoption trust layer is now in place:
+
+- install and distribution flow is documented with project-local as the primary path
+- verification harness and CI now include structural checks, release metadata checks, and a clean-install smoke test
+- architecture, contributing, verification, and troubleshooting docs exist
+- release metadata flow is visible through `CHANGELOG.md` and `VERSION`
+
+The next build step is to move on to orchestration and memory improvements, then any remaining browser/parity polish that still matters for adoption.
 
 ## Next Milestone: External Adoption
 
@@ -502,6 +509,10 @@ Use a trust-first completion approach:
 - `CHANGELOG.md`
 - `VERSION`
 
+Status:
+
+- completed
+
 ### Exit Criteria
 
 - a new user can install the pack and run the core workflows from docs alone
@@ -514,3 +525,32 @@ Use a trust-first completion approach:
 - adding more top-level workflows unless required to unblock adoption
 - deeper orchestration or memory systems before baseline verification exists
 - replacing the current browser bridge purely for architectural purity
+
+## Automatic Review Status Snapshot
+
+- Review date: 2026-03-30
+- Pipeline status: CEO, design, and engineering review completed
+- Review artifact: `docs/implementation-plan-autoreview.md`
+- Decision audit trail: `docs/implementation-plan-decision-audit.md`
+- Current state: review approved and finalized
+
+Resolved user-owned items:
+
+- external adoption remains the active milestone premise
+- clean-machine verification is required before calling the milestone complete
+- project-local install is the primary UX over user-global install for this milestone
+- evidence artifacts should stay minimal and inspectable first for this milestone
+
+## Milestone Progress Update
+
+Completed in response to the approved review:
+
+1. install and distribution flow
+2. verification harness and CI
+3. architecture, contributor, and troubleshooting docs
+4. release metadata and changelog/version flow
+
+Remaining priority order:
+
+1. orchestration and memory improvements
+2. remaining parity or differentiated browser polish
