@@ -88,6 +88,8 @@ Additional implemented workflows:
 - `/plan-ceo-review`
 - `/plan-design-review`
 - `/design-review`
+- `/design-shotgun`
+- `/design-consultation`
 - `/autoplan`
 - `/careful`
 - `/freeze`
@@ -95,6 +97,8 @@ Additional implemented workflows:
 - `/unfreeze`
 - `/canary`
 - `/benchmark`
+- `/connect-chrome`
+- `/learn`
 - `/ship`
 
 Notes:
@@ -120,6 +124,10 @@ Notes:
 - `/unfreeze` is implemented as the workflow that clears the current edit boundary.
 - `/canary` is implemented as the post-deploy monitoring workflow for live deployment health.
 - `/benchmark` is implemented as the baseline-aware performance regression workflow.
+- `/design-shotgun` is implemented as the visual design exploration workflow that generates multiple variants and converges on feedback.
+- `/design-consultation` is implemented as the design system consultation workflow that proposes aesthetics and creates DESIGN.md.
+- `/connect-chrome` is implemented as the visible-browser validation workflow for Chrome-based browser workflows.
+- `/learn` is implemented as the project learning management workflow for capturing and recalling insights.
 - `/ship` is implemented as the shipping workflow and requires gitmoji-formatted commit messages for commits it creates.
 
 Planning docs:

@@ -210,6 +210,40 @@
         }
       }
     },
+    "learn": {
+      "description": "Manages project learnings by showing, searching, pruning, exporting, and recording durable project insights.",
+      "mode": "subagent",
+      "temperature": 0.1
+    },
+    "design-shotgun": {
+      "description": "Explores multiple distinct design directions, compares them, captures feedback, and converges on an approved visual direction.",
+      "mode": "subagent",
+      "temperature": 0.2,
+      "tools": {
+        "browser": true
+      }
+    },
+    "design-consultation": {
+      "description": "Proposes a coherent product design system, explains the rationale, previews the direction, and writes or updates DESIGN.md when approved.",
+      "mode": "subagent",
+      "temperature": 0.2,
+      "tools": {
+        "browser": true
+      },
+      "permission": {
+        "skill": {
+          "design-consultation": "allow"
+        }
+      }
+    },
+    "connect-chrome": {
+      "description": "Validates the configured browser runtime, checks whether visible-browser control is available, and explains how to continue with browser-driven workflows.",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "tools": {
+        "browser": true
+      }
+    },
     "qa": {
       "description": "Runs browser-oriented QA workflows, triages issues, and fixes app bugs when the required QA adapter is configured.",
       "mode": "subagent",
