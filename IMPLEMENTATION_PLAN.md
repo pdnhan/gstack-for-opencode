@@ -464,3 +464,53 @@ Completed:
 ## Active Next Step
 
 All planned workflows are now implemented. The remaining gaps from the gap analysis are in docs maturity, verification/CI, orchestration/memory, and distribution. See the gap analysis section above for the full list.
+
+## Next Milestone: External Adoption
+
+The next milestone should optimize for external adoption rather than additional workflow breadth or deeper parity work.
+
+### Goal
+
+Make the pack installable, verifiable, and understandable enough that another engineer can adopt it without reading the source or relying on the current author for setup.
+
+### Strategy
+
+Use a trust-first completion approach:
+
+- finish install and distribution paths before adding more workflow surface
+- add verification and CI before deeper orchestration work
+- close core documentation gaps before polishing advanced differentiators
+- treat browser/runtime productization as important, but secondary to trust and onboarding for this milestone
+
+### Prioritized Work Order
+
+1. install and distribution flow
+2. verification harness and CI
+3. architecture, contributor, and troubleshooting docs
+4. release metadata and changelog/version flow
+5. orchestration and memory improvements
+6. remaining parity or differentiated browser polish
+
+### Deliverables
+
+- polished project-local and user-global install documentation
+- a repeatable bootstrap/setup path
+- CI for commands, skills, and tools
+- at least one workflow verification path for core commands
+- `ARCHITECTURE.md`
+- `CONTRIBUTING.md`
+- `CHANGELOG.md`
+- `VERSION`
+
+### Exit Criteria
+
+- a new user can install the pack and run the core workflows from docs alone
+- repository changes are validated automatically in CI
+- contributors can understand where agents, commands, skills, and tools belong without source spelunking
+- releases have visible version and change history
+
+### Non-Goals For This Milestone
+
+- adding more top-level workflows unless required to unblock adoption
+- deeper orchestration or memory systems before baseline verification exists
+- replacing the current browser bridge purely for architectural purity
