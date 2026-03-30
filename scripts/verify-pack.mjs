@@ -14,6 +14,13 @@ const requiredTopLevelFiles = [
   "opencode.json",
 ]
 
+const requiredDocs = [
+  path.join("docs", "install.md"),
+  path.join("docs", "quickstart.md"),
+  path.join("docs", "verification.md"),
+  path.join("docs", "troubleshooting.md"),
+]
+
 const requiredCoreCommands = [
   "review",
   "investigate",
@@ -103,6 +110,10 @@ function extractSkillDisplayName(markdown) {
 }
 
 for (const file of requiredTopLevelFiles) {
+  assertExists(file)
+}
+
+for (const file of requiredDocs) {
   assertExists(file)
 }
 
@@ -217,6 +228,7 @@ if (errors.length > 0) {
 
 console.log("Verification passed.")
 console.log(`- checked top-level docs: ${requiredTopLevelFiles.length}`)
+console.log(`- checked required support docs: ${requiredDocs.length}`)
 console.log(`- checked commands: ${commandNames.length}`)
 console.log(`- checked agents: ${agentNames.size}`)
 console.log(`- checked skills: ${skillNames.size}`)

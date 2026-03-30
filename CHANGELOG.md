@@ -4,6 +4,12 @@ All notable changes to this project should be documented in this file.
 
 The format is intentionally lightweight and optimized for a workflow-pack repository.
 
+## Unreleased
+
+- formalized the external-adoption trust layer around install, verification, CI, troubleshooting, and release metadata
+- added clean-install smoke verification and release metadata checks to the pack verification flow
+- documented canonical install, verification, and recovery paths for adopters and contributors
+
 ## 0.1.0
 
 Initial usable alpha release.

@@ -22,6 +22,12 @@ From this repo root:
 
 See `docs/quickstart.md` for the non-destructive install behavior and browser adapter notes.
 
+For the full install decision tree and trust expectations, also read:
+
+- `docs/install.md`
+- `docs/verification.md`
+- `docs/troubleshooting.md`
+
 ## Repository Conventions
 
 - prefer `.opencode/agents`, `.opencode/commands`, and `.opencode/skills` over compatibility shims
@@ -105,13 +111,29 @@ Run the verification script before opening a PR or asking for review:
 What it currently checks:
 
 - required top-level files exist
+- required install, verification, and troubleshooting docs exist
 - core commands, agents, and skills exist
 - `opencode.json` parses and maps to real agent files
 - command frontmatter agent references resolve
 - skill permissions in agents and `opencode.json` resolve
 - browser-enabled agents have the repo-owned browser tool available
+- `VERSION` is valid and reflected in `CHANGELOG.md`
+- the quickstart installer works against a fresh temporary directory
 
-This is a structural verification pass, not full workflow e2e coverage.
+This is still a lightweight verification pass, not full end-to-end workflow execution inside OpenCode.
+
+## Release Metadata
+
+This repo keeps release state explicit:
+
+- `VERSION` is the current pack version
+- `CHANGELOG.md` has an `Unreleased` section plus released version sections
+
+When shipping a user-visible change:
+
+1. update `CHANGELOG.md`
+2. bump `VERSION` if the change is part of a release cut
+3. keep docs aligned with the release surface
 
 ## Documentation Expectations
 

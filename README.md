@@ -12,7 +12,7 @@ The goal is to bring opinionated planning, review, QA, investigation, and shippi
 
 ## Status
 
-Usable alpha, now moving into an external-adoption phase focused on installability, verification, and contributor-facing docs.
+Usable alpha, now in the external-adoption phase focused on installability, verification, CI, and contributor-facing docs.
 
 ## Project Layout
 
@@ -35,14 +35,16 @@ opencode.json
 - root-cause-first debugging
 - optional browser and deploy adapters
 
-## Near-Term Roadmap
+## Adoption Priorities
 
-1. finish the engineering core: `review`, `investigate`, `qa`, `plan-eng-review`
-2. add shared skills for review, QA, planning, and release checks
-3. add optional browser-backed QA and deployment integrations
-4. document install and usage for both global and repo-local setups
+1. make project-local install the default, documented path
+2. verify the pack on a clean machine path in CI
+3. fill architecture, contributor, and troubleshooting docs
+4. keep release metadata visible with `CHANGELOG.md` and `VERSION`
 
-## Quickstart
+## Install
+
+Preferred path for this milestone: project-local install.
 
 To install this pack into another project:
 
@@ -52,26 +54,27 @@ To install this pack into another project:
 
 Then open that target project in OpenCode.
 
-Full setup notes live in `docs/quickstart.md`.
+Canonical docs:
 
-Canonical install guide:
-
-- `docs/install.md`
-
-Contributor and architecture docs:
-
-- `ARCHITECTURE.md`
-- `CONTRIBUTING.md`
-- `CHANGELOG.md`
-- `VERSION`
+- install: `docs/install.md`
+- quickstart: `docs/quickstart.md`
+- verification: `docs/verification.md`
+- troubleshooting: `docs/troubleshooting.md`
+- architecture: `ARCHITECTURE.md`
+- contributing: `CONTRIBUTING.md`
+- release history: `CHANGELOG.md`
+- current version: `VERSION`
 
 ## Usage
 
 Open the repo in OpenCode. Project-local commands, agents, and skills should be discovered automatically.
 
-The first implemented workflow is:
+Start with:
 
 - `/review`
+- `/investigate`
+- `/qa`
+- `/ship`
 
 Additional implemented workflows:
 
@@ -140,3 +143,9 @@ Verification:
 ```sh
 ./scripts/verify-pack.sh
 ```
+
+That verification pass now includes:
+
+- structural checks for commands, agents, skills, and docs
+- release metadata checks for `VERSION` and `CHANGELOG.md`
+- a fresh-directory install smoke test using `scripts/quickstart-setup.sh`
