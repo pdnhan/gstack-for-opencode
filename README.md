@@ -9,9 +9,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/anomalyco/opencode/stargazers">
-    <img src="https://img.shields.io/github/stars/anomalyco/opencode?style=flat" alt="GitHub Stars"/>
-  </a>
   <a href="https://github.com/anomalyco/opencode/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/anomalyco/opencode" alt="License"/>
   </a>
