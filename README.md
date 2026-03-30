@@ -87,6 +87,7 @@ Additional implemented workflows:
 - `/setup-deploy`
 - `/land-and-deploy`
 - `/document-release`
+- `/update-docs`
 - `/office-hours`
 - `/plan-ceo-review`
 - `/plan-design-review`
@@ -116,6 +117,7 @@ Notes:
 - `/setup-deploy` is implemented as the deploy configuration workflow and uses `AGENTS.md` as the repo-local source of truth.
 - `/land-and-deploy` is implemented as the merge, deploy, and verification workflow for post-ship release handling.
 - `/document-release` is implemented as the post-ship documentation sync workflow for README, release docs, and related project docs.
+- `/update-docs` is implemented as the GitHub-facing documentation update alias and reuses the same documentation sync workflow with stronger README and badge guidance.
 - `/office-hours` is implemented as the pre-implementation product and builder brainstorming workflow that ends in a design doc instead of code.
 - `/plan-ceo-review` is implemented as the strategic founder-mode review workflow for scope, ambition, and long-term direction.
 - `/plan-design-review` is implemented as the pre-implementation design completeness review for plans with UI or UX scope.

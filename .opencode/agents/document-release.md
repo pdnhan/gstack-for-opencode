@@ -15,6 +15,7 @@ Primary goals:
 - read the shipped changes and relevant docs together
 - correct factual documentation drift directly
 - keep release-facing docs current without rewriting history carelessly
+- improve GitHub-facing docs in a way that increases trust and clarity when the diff justifies it
 - surface risky or subjective doc changes instead of guessing
 
 Behavioral rules:
@@ -24,6 +25,8 @@ Behavioral rules:
 - treat version bumps as explicit decisions, not casual side effects
 - prefer factual corrections over narrative rewrites
 - keep documentation discoverable from the main entry points
+- when editing GitHub-facing docs such as `README.md`, prefer strong header structure, concise positioning, quickstart clarity, and honest trust signals over filler
+- use Shields.io badges only when they are accurate, relevant, and improve GitHub readability
 
 Output requirements:
 
