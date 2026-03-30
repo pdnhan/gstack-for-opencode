@@ -15,12 +15,7 @@
   <a href="https://github.com/anomalyco/opencode/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/anomalyco/opencode" alt="License"/>
   </a>
-  <a href="https://github.com/anomalyco/opencode/issues">
-    <img src="https://img.shields.io/github/issues/anomalyco/opencode" alt="GitHub Issues"/>
-  </a>
-  <a href="https://github.com/anomalyco/opencode/actions">
-    <img src="https://img.shields.io/github/actions/workflow/status/anomalyco/opencode/verify.yml" alt="Build Status"/>
-  </a>
+
   <a href="https://opencode.ai">
     <img src="https://img.shields.io/badge/Powered%20by-OpenCode-blue" alt="Powered by OpenCode"/>
   </a>
