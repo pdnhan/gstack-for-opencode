@@ -254,17 +254,26 @@ Implemented workflows:
 - `/plan-ceo-review`
 - `/plan-design-review`
 - `/design-review`
+- `/design-shotgun`
+- `/design-consultation`
 - `/autoplan`
 - `/careful`
 - `/freeze`
 - `/guard`
 - `/unfreeze`
+- `/connect-chrome`
+- `/learn`
 - `/review`
 - `/investigate`
 - `/qa`
 - `/qa-only`
 - `/plan-eng-review`
 - `/ship`
+- `/retro`
+- `/codex`
+- `/cso`
+- `/gstack-upgrade`
+- `/ogstack-upgrade`
 
 Implemented supporting pieces:
 
@@ -285,16 +294,15 @@ This section records what is still missing after cross-checking the upstream `gs
 
 ### Missing workflow surface
 
-Not yet implemented:
-
-- `/design-consultation`
-- `/design-shotgun`
-- `/connect-chrome`
+All core planned workflows are now implemented.
 
 Implemented with opencode-native adaptations:
 
 - `/gstack-upgrade` — ports new gstack workflows to this opencode repo (rather than updating the gstack binary)
 - `/ogstack-upgrade` — updates this gstack-for-opencode repo itself from its remote
+- `/retro` — weekly engineering retrospective with commit history analysis
+- `/codex` — OpenAI Codex CLI wrapper for review, challenge, and consult modes
+- `/cso` — Chief Security Officer mode for infrastructure-first security auditing
 
 ### Missing deeper runtime capabilities
 
@@ -455,11 +463,7 @@ Exit criteria:
 
 ## Immediate Next Build Order
 
-Completed:
-
-1. `/retro` — done
-2. `/codex` — done
-3. `/cso` — done
+All planned workflows have been implemented. The repo has reached full Phase 2 completion.
 
 ## Active Next Step
 

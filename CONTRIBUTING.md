@@ -1,16 +1,20 @@
-# Contributing
+# Contributing to gstack-for-opencode
+
+Thank you for your interest in contributing! This guide covers how to set up, develop, and submit changes to the gstack-for-opencode project.
 
 ## Goal
 
-Contributions should keep the pack OpenCode-native, inspectable, and easy to trust.
-
-Prefer small, auditable changes over broad prompt expansion.
+Contributions should keep the pack OpenCode-native, inspectable, and easy to trust. Prefer small, auditable changes over broad prompt expansion.
 
 ## Setup
 
 ### Work on this repo directly
 
-Open this repository in OpenCode.
+Open this repository in OpenCode:
+
+```sh
+opencode /path/to/gstack-for-opencode
+```
 
 ### Install the pack into another project
 
@@ -20,7 +24,7 @@ From this repo root:
 ./scripts/quickstart-setup.sh /path/to/your-project
 ```
 
-See `docs/quickstart.md` for the non-destructive install behavior and browser adapter notes.
+See [`docs/quickstart.md`](docs/quickstart.md) for the non-destructive install behavior and browser adapter notes.
 
 For the full install decision tree and trust expectations, also read:
 
@@ -30,11 +34,11 @@ For the full install decision tree and trust expectations, also read:
 
 ## Repository Conventions
 
-- prefer `.opencode/agents`, `.opencode/commands`, and `.opencode/skills` over compatibility shims
-- keep prompts small and move reusable behavior into skills
-- prefer Markdown-defined workflows unless code is required for a tool adapter
-- optimize for auditability over cleverness
-- preserve the behavior contract from upstream `gstack`, not its host-specific bootstrap details
+- Prefer `.opencode/agents`, `.opencode/commands`, and `.opencode/skills` over compatibility shims
+- Keep prompts small and move reusable behavior into skills
+- Prefer Markdown-defined workflows unless code is required for a tool adapter
+- Optimize for auditability over cleverness
+- Preserve the behavior contract from upstream `gstack`, not its host-specific bootstrap details
 
 ## Workflow Priorities
 
@@ -46,24 +50,26 @@ Unless a change explicitly targets a different area, prefer work in this order:
 4. `plan-eng-review`
 5. `ship`
 
-## How To Add Or Change A Workflow
+## How to Add or Change a Workflow
 
 ### 1. Start with the smallest correct surface
 
-Ask:
+Ask yourself:
 
-- is this a new command, or should an existing workflow absorb it?
-- does the behavior belong in a reusable skill?
-- is a repo-owned tool actually required, or can the workflow stay read-only?
+- Is this a new command, or should an existing workflow absorb it?
+- Does the behavior belong in a reusable skill?
+- Is a repo-owned tool actually required, or can the workflow stay read-only?
 
 ### 2. Update the right runtime layers
 
 For a typical workflow change, touch only what is necessary:
 
-- `.opencode/skills/<name>/SKILL.md` for reusable procedure
-- `.opencode/agents/<name>.md` for role and boundaries
-- `opencode.json` for agent registration, tools, and skill permissions
-- `.opencode/commands/<name>.md` for the user-facing slash command
+| Layer | Purpose |
+|-------|---------|
+| `.opencode/skills/<name>/SKILL.md` | Reusable procedure |
+| `.opencode/agents/<name>.md` | Role and boundaries |
+| `opencode.json` | Agent registration, tools, permissions |
+| `.opencode/commands/<name>.md` | User-facing slash command |
 
 Not every change needs all four.
 
@@ -75,9 +81,9 @@ Commands should not carry long duplicated prompts. Put durable logic in skills a
 
 Agents should:
 
-- have one clear job
-- define tool access narrowly
-- state output format and stop conditions explicitly
+- Have one clear job
+- Define tool access narrowly
+- State output format and stop conditions explicitly
 
 ### 5. Document capability gaps honestly
 
@@ -87,40 +93,50 @@ If OpenCode lacks a surface that upstream `gstack` relied on, call that out dire
 
 Review-oriented workflows must:
 
-- put findings first
-- focus on bugs, regressions, risky assumptions, and missing tests
-- cite files when possible
-- keep summaries secondary
+- Put findings first
+- Focus on bugs, regressions, risky assumptions, and missing tests
+- Cite files when possible
+- Keep summaries secondary
 
-## Browser And Tooling Changes
+## Git Best Practices
+
+When submitting changes:
+
+- Use specific file paths in `git add` rather than greedy commands:
+  ```sh
+  # Good
+  git add README.md .opencode/commands/review.md
+
+  # Avoid
+  git add .
+  ```
+- Write clear, concise commit messages
+- Keep PRs focused on one logical change
+
+## Browser and Tooling Changes
 
 If you change `.opencode/tools/browser.ts`, browser adapter config, or QA runtime behavior:
 
-- update the relevant docs in `docs/`
-- keep blocked-mode behavior honest
-- avoid claiming browser coverage when adapter capability is insufficient
+- Update the relevant docs in `docs/`
+- Keep blocked-mode behavior honest
+- Avoid claiming browser coverage when adapter capability is insufficient
 
 ## Verification
 
-Run the verification script before opening a PR or asking for review:
+Run the verification script before opening a PR:
 
 ```sh
 ./scripts/verify-pack.sh
 ```
 
-What it currently checks:
+What it checks:
 
-- required top-level files exist
-- required install, verification, and troubleshooting docs exist
-- core commands, agents, and skills exist
+- Required top-level files exist
+- Core commands, agents, and skills exist
 - `opencode.json` parses and maps to real agent files
-- command frontmatter agent references resolve
-- skill permissions in agents and `opencode.json` resolve
-- browser-enabled agents have the repo-owned browser tool available
-- `VERSION` is valid and reflected in `CHANGELOG.md`
-- the quickstart installer works against a fresh temporary directory
-
-This is still a lightweight verification pass, not full end-to-end workflow execution inside OpenCode.
+- Command frontmatter agent references resolve
+- Skill permissions in agents and `opencode.json` resolve
+- Browser-enabled agents have the repo-owned browser tool available
 
 ## Release Metadata
 
@@ -141,12 +157,12 @@ Update docs when behavior changes in a way a new adopter or contributor would no
 
 Common examples:
 
-- workflow added or removed
-- command semantics changed
-- install behavior changed
-- browser or deploy setup changed
-- contribution rules or architecture assumptions changed
-- release metadata changed
+- Workflow added or removed
+- Command semantics changed
+- Install behavior changed
+- Browser or deploy setup changed
+- Contribution rules or architecture assumptions changed
+- Release metadata changed
 
 At minimum, consider whether `README.md`, `ARCHITECTURE.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `VERSION`, and any affected file in `docs/` need updates.
 
@@ -154,10 +170,20 @@ At minimum, consider whether `README.md`, `ARCHITECTURE.md`, `CONTRIBUTING.md`, 
 
 Prefer one logical change per PR:
 
-- one workflow
-- one skill extraction
-- one tool/runtime improvement
-- one docs or install improvement
-- one verification improvement
+- One workflow
+- One skill extraction
+- One tool/runtime improvement
+- One docs or install improvement
+- One verification improvement
 
 Small PRs are easier to review and easier to trust.
+
+## Code of Conduct
+
+This project follows the [Contributor Covenant](https://www.contributor-covenant.org/). By participating, you are expected to uphold this code.
+
+## Getting Help
+
+- 📖 [Documentation](docs/)
+- 🐛 [Issue Tracker](https://github.com/anomalyco/opencode/issues)
+- 💬 [Discussions](https://github.com/anomalyco/opencode/discussions)
