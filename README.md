@@ -12,17 +12,7 @@ The goal is to bring opinionated planning, review, QA, investigation, and shippi
 
 ## Status
 
-Usable alpha.
-
-Implemented so far:
-
-- implementation plan
-- project guidance via `AGENTS.md`
-- minimal `opencode.json`
-- first shared review skill
-- first `review` agent and `/review` command
-- `investigate` agent, command, and shared skill
-- `qa` agent, command, and shared skill
+Usable alpha, now moving into an external-adoption phase focused on installability, verification, and contributor-facing docs.
 
 ## Project Layout
 
@@ -63,6 +53,17 @@ To install this pack into another project:
 Then open that target project in OpenCode.
 
 Full setup notes live in `docs/quickstart.md`.
+
+Canonical install guide:
+
+- `docs/install.md`
+
+Contributor and architecture docs:
+
+- `ARCHITECTURE.md`
+- `CONTRIBUTING.md`
+- `CHANGELOG.md`
+- `VERSION`
 
 ## Usage
 
@@ -125,3 +126,9 @@ Planning docs:
 
 - `docs/browser-adapter-plan.md`
 - `docs/browser-adapter-config.md`
+
+Verification:
+
+```sh
+./scripts/verify-pack.sh
+```
