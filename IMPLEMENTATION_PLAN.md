@@ -290,10 +290,11 @@ Not yet implemented:
 - `/design-consultation`
 - `/design-shotgun`
 - `/connect-chrome`
-- `/retro`
-- `/codex`
-- `/cso`
-- `/gstack-upgrade`
+
+Implemented with opencode-native adaptations:
+
+- `/gstack-upgrade` — ports new gstack workflows to this opencode repo (rather than updating the gstack binary)
+- `/ogstack-upgrade` — updates this gstack-for-opencode repo itself from its remote
 
 ### Missing deeper runtime capabilities
 
@@ -454,12 +455,12 @@ Exit criteria:
 
 ## Immediate Next Build Order
 
-The next implementation sequence should be:
+Completed:
 
-1. `/retro`
-2. `/codex`
-3. `/cso`
+1. `/retro` — done
+2. `/codex` — done
+3. `/cso` — done
 
 ## Active Next Step
 
-Continue by closing the remaining operational and support workflows, starting with `/retro`.
+All planned workflows are now implemented. The remaining gaps from the gap analysis are in docs maturity, verification/CI, orchestration/memory, and distribution. See the gap analysis section above for the full list.
