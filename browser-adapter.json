@@ -1,5 +1,5 @@
 {
-  "command": ["./.opencode/bin/gstack-browser-backend"],
+  "command": ["./bin/gstack-browser-backend"],
   "capabilities": [
     "status",
     "goto",
