@@ -42,19 +42,54 @@ merge_dir_without_overwrite() {
   printf '%s\n' "merge $dst"
 }
 
-copy_if_missing "$PACK_ROOT/AGENTS.md" "$TARGET_DIR/AGENTS.md"
-copy_if_missing "$PACK_ROOT/opencode.json" "$TARGET_DIR/opencode.json"
+merge_agents() {
+  src=$1
+  dst=$2
+  
+  if [ -e "$dst" ]; then
+    if ! grep -q "gstack-for-opencode" "$dst"; then
+      cp "$dst" "$dst.backup"
+      printf '%s\n' "backup $dst.backup"
+      printf '\n\n---\n\n<!-- gstack-for-opencode -->\n' >> "$dst"
+      cat "$src" >> "$dst"
+      printf '%s\n' "merge $dst"
+    else
+      printf '%s\n' "skip  $dst already merged"
+    fi
+  else
+    mkdir -p "$(dirname -- "$dst")"
+    cp "$src" "$dst"
+    printf '%s\n' "copy  $dst"
+  fi
+}
+
+merge_opencode_json() {
+  src=$1
+  dst=$2
+
+  if [ -e "$dst" ]; then
+    cp "$dst" "$dst.backup"
+    printf '%s\n' "backup $dst.backup"
+    node "$SCRIPT_DIR/merge-json.mjs" "$dst" "$src"
+  else
+    mkdir -p "$(dirname -- "$dst")"
+    cp "$src" "$dst"
+    printf '%s\n' "copy  $dst"
+  fi
+}
+
+merge_agents "$PACK_ROOT/AGENTS.md" "$TARGET_DIR/AGENTS.md"
+merge_opencode_json "$PACK_ROOT/opencode.json" "$TARGET_DIR/opencode.json"
 
 mkdir -p "$TARGET_DIR/.opencode"
 merge_dir_without_overwrite "$PACK_ROOT/.opencode/agents" "$TARGET_DIR/.opencode/agents"
 merge_dir_without_overwrite "$PACK_ROOT/.opencode/commands" "$TARGET_DIR/.opencode/commands"
 merge_dir_without_overwrite "$PACK_ROOT/.opencode/skills" "$TARGET_DIR/.opencode/skills"
 merge_dir_without_overwrite "$PACK_ROOT/.opencode/tools" "$TARGET_DIR/.opencode/tools"
-merge_dir_without_overwrite "$PACK_ROOT/.opencode/bin" "$TARGET_DIR/.opencode/bin"
-merge_dir_without_overwrite "$PACK_ROOT/.opencode/safety" "$TARGET_DIR/.opencode/safety"
+merge_dir_without_overwrite "$PACK_ROOT/bin" "$TARGET_DIR/bin"
 
-copy_if_missing "$PACK_ROOT/.opencode/browser-adapter.example.json" "$TARGET_DIR/.opencode/browser-adapter.example.json"
-copy_if_missing "$PACK_ROOT/.opencode/browser-adapter.json" "$TARGET_DIR/.opencode/browser-adapter.json"
+copy_if_missing "$PACK_ROOT/browser-adapter.example.json" "$TARGET_DIR/browser-adapter.example.json"
+copy_if_missing "$PACK_ROOT/browser-adapter.json" "$TARGET_DIR/browser-adapter.json"
 
 printf '\n'
 printf '%s\n' "Quickstart setup complete."

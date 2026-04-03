@@ -42,8 +42,8 @@ const DEFAULT_CAPABILITIES = [
 
 function configPaths(worktree: string) {
   return {
-    adapter: path.join(worktree, ".opencode", "browser-adapter.json"),
-    example: path.join(worktree, ".opencode", "browser-adapter.example.json"),
+    adapter: path.join(worktree, "browser-adapter.json"),
+    example: path.join(worktree, "browser-adapter.example.json"),
   }
 }
 

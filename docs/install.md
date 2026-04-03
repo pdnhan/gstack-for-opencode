@@ -46,8 +46,8 @@ Recommended target state:
 
 What it does:
 
-- copies `AGENTS.md` only if the target does not already have one
-- copies `opencode.json` only if the target does not already have one
+- safely appends pack agents to `AGENTS.md` if the target already has one
+- interactively merges `opencode.json` tools and agents if the target already has one
 - merges the pack's `.opencode/` directories without overwriting existing files
 - copies browser adapter example/config files if they are missing
 
@@ -146,6 +146,6 @@ Known limitations:
 
 - no standalone package distribution yet
 - no automated upgrade command for downstream target repos
-- existing `AGENTS.md`, `opencode.json`, or `.opencode/*` files are not merged semantically
+- `AGENTS.md` and `opencode.json` are now semantically merged, but existing `.opencode/*` folder files are not forcefully overwritten
 - browser-backed workflows still depend on adapter configuration in the target repo
 - user-global install is documented as a source-clone workflow, not a runtime-wide package install

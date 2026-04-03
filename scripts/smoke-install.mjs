@@ -34,7 +34,7 @@ const requiredInstalledPaths = [
   path.join(".opencode", "commands", "ship.md"),
   path.join(".opencode", "skills", "review-workflow", "SKILL.md"),
   path.join(".opencode", "tools", "browser.ts"),
-  path.join(".opencode", "browser-adapter.json"),
+  "browser-adapter.json",
 ]
 
 const missing = requiredInstalledPaths.filter((relativePath) => !existsSync(path.join(targetDir, relativePath)))
